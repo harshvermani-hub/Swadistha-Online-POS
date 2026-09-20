@@ -1,6 +1,7 @@
 name: Deploy Swadistha
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
