@@ -19,10 +19,12 @@
       actions.appendChild(document.createTextNode(' '));
       actions.appendChild(billBtn);
 
-      const kot=kots.slice().reverse().find(function(x){
-        return x.items && bill.items && x.items.length===bill.items.length &&
-          x.items.every(function(ki){return bill.items.some(function(bi){return bi.name===ki.name && Number(bi.qty)===Number(ki.qty)})});
-      });
+      const kot=bill.kotNo
+        ? kots.find(function(x){return String(x.no)===String(bill.kotNo)})
+        : kots.slice().reverse().find(function(x){
+            return x.items && bill.items && x.items.length===bill.items.length &&
+              x.items.every(function(ki){return bill.items.some(function(bi){return bi.name===ki.name && Number(bi.qty)===Number(ki.qty)})});
+          });
       if(kot){
         const kotBtn=document.createElement('button');
         kotBtn.className='btn blue';
